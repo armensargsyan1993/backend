@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.emojione.EmojiOneView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.icons525.Icons525View?>
+<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MyPlayerController">
+   <children>
+      <AnchorPane layoutX="-1.0" layoutY="373.0" prefHeight="127.0" prefWidth="499.0" style="-fx-background-color: #212121;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" layoutX="14.0" layoutY="-8.0" prefHeight="71.0" prefWidth="499.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
+               <children>
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="102.0" prefWidth="499.0">
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="FORWARD" layoutX="286.0" layoutY="79.0" onMouseClicked="#forward" size="30" textAlignment="CENTER" x="20.0" y="5.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </FontAwesomeIconView>
+                        <FontAwesomeIconView fill="WHITE" glyphName="BACKWARD" layoutX="180.0" layoutY="79.0" onMouseClicked="#backward" size="30" textAlignment="CENTER" x="-10.0" y="5.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </FontAwesomeIconView>
+                        <Slider fx:id="rateSlider" blockIncrement="1.0" layoutX="184.0" layoutY="50.0" max="20.0" prefHeight="14.0" prefWidth="138.0" value="10.0" AnchorPane.bottomAnchor="0.0" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="FAST_FORWARD" layoutX="324.0" layoutY="114.0" size="10" textAlignment="CENTER" x="10.0" AnchorPane.bottomAnchor="0.5714282989501953" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="FAST_BACKWARD" layoutX="153.0" layoutY="114.0" size="10" textAlignment="CENTER" wrappingWidth="17.0" x="10.0" AnchorPane.bottomAnchor="0.5714282989501953" />
+                        <Icons525View glyphName="EYE" layoutX="445.0" layoutY="90.0" onMouseClicked="#eye" size="30" AnchorPane.bottomAnchor="33.5" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="52.5" />
+                        <MaterialIconView glyphName="NOTE_ADD" layoutX="14.0" layoutY="92.0" onMouseClicked="#add" size="30" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="52.0" />
+                        <Slider fx:id="timeSlider" blockIncrement="0.0" layoutX="3.0" layoutY="8.0" majorTickUnit="5.0" max="0.0" minorTickCount="4" prefHeight="10.0" prefWidth="499.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Slider fx:id="valueSlider" blockIncrement="1.0" layoutX="180.0" layoutY="15.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" />
+                        <EmojiOneView fx:id="btn_play" fill="WHITE" glyphName="PLAY_PAUSE" layoutX="230.0" layoutY="86.0" size="40">
+                           <effect>
+                              <Glow level="0.0" />
+                           </effect></EmojiOneView>
+                        <MaterialIconView fx:id="btn_repeat" fill="WHITE" glyphName="REPEAT_ONE" layoutX="363.0" layoutY="88.0" size="30" />
+                        <Text fx:id="timeText" fill="RED" layoutX="414.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="70.13671910762787" />
+                        <Text fx:id="currTimeText" fill="RED" layoutX="14.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="70.13671875" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mediaAndListViewPane" layoutX="150.0" prefHeight="362.0" prefWidth="499.0" AnchorPane.bottomAnchor="126.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ListView fx:id="playListView" onDragDropped="#mediaDragDropped" onDragEntered="#mediaDragEntered" onDragExited="#mediaDragExited" onDragOver="#mediaDragOver" prefHeight="362.0" prefWidth="499.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <MediaView fx:id="mediaView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>

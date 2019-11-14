@@ -1,0 +1,60 @@
+@Override
+public void start(Stage primaryStage) {
+    StackPane root = new StackPane();
+    root.setStyle("-fx-background-color: null;");
+    root.setPadding(new Insets(10));
+
+    DoubleProperty doubleProperty = new SimpleDoubleProperty(0);
+
+    Region region = new Region();
+    region.styleProperty().bind(Bindings
+            .concat("-fx-background-radius:20; -fx-background-color: rgba(56, 176, 209, ")
+            .concat(doubleProperty)
+            .concat(");"));
+    region.setEffect(new DropShadow(10, Color.GREY));
+
+    rateSlider slider = new Slider(0, 1, .3);
+    doubleProperty.bind(slider.valueProperty());
+
+    root.getChildren().addAll(region, slider);
+
+    primaryStage.initStyle(StageStyle.TRANSPARENT);
+    Scene scene = new Scene(root, 300, 250);
+    scene.setFill(Color.TRANSPARENT);
+
+    primaryStage.setTitle("Hello World!");
+    primaryStage.setScene(scene);
+    primaryStage.show();
+}
+
+
+
+
+
+
+
+
+
+да, вы можете сделать это в javafx с подсессиями, подсеть - это как сцена, которую можно добавить в макеты
+
+вы можете сделать что-то подобное
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        StackPane layoutOne = new StackPane();
+        Label labelOne = new Label("One");
+        layoutOne.getChildren().add(labelOne);
+        SubScene subSceneOne = new SubScene(layoutOne,300,100);
+
+        StackPane layoutTwo = new StackPane();
+        Label labelTwo = new Label("Two");
+        layoutTwo.getChildren().add(labelTwo);
+        SubScene subSceneTwo = new SubScene(layoutTwo,300,100);
+
+        VBox root = new VBox(10);
+        root.setAlignment(Pos.CENTER);
+        root.getChildren().addAll(subSceneOne,subSceneTwo);
+        Scene mainScene = new Scene(root,300,210);
+        primaryStage.setScene(mainScene);
+        primaryStage.show();
+    }
